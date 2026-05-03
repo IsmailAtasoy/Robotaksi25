@@ -1,47 +1,94 @@
-# 🚗 Robotaksi25
+# 🚗 Robotaksi Lane Follower
 
-**Robotaksi25**, [Robotaksi Binek Otonom Yarışması](https://robotaksi.org/) kapsamında geliştirilen otonom araç sistemini içerir. Bu proje, araç algılama, yol planlama, kontrol sinyalleri üretme gibi adımları entegre ederek tümleşik bir sürücüsüz sistem sunmayı hedefler.
-
----
-
-## 🎯 İçerik
-
-- `perception/`: Kameralı nesne tanıma ve yol izleme algoritmaları  
-- `mapping/`: Harita oluşturma ve SLAM modülleri  
-- `planning/`: Yol planlama ve görev yönetimi  
-- `control/`: Araç kontrol algoritmaları (PID, MPC vb.)  
-- `simulation/`: Gazebo/ROS veya PyBullet tabanlı simülasyon ortamları  
-- `hardware/`: Sensör entegrasyonları, CAN-bus arayüzü, düşük seviye iletişim  
-- `docs/`: Yapılandırılmış dokümantasyon dosyaları  
+This repository contains a simplified version of my previous **Robotaksi autonomous driving project**.
+All unrelated modules have been removed, and the system is focused entirely on **lane following**.
 
 ---
 
-## 📋 Özellikler
+## 📌 Overview
 
-- **Araç algılama ve sınıflandırma**  
-  - YOLOv8 veya benzeri modellerle nesne tespiti  
-  - Gerçek zamanlı yol çizgisi algılama  
-- **Yol planlama**  
-  - A* veya RRT tabanlı global yol planlaması  
-  - MPC tabanlı lokal kontrol  
-- **Kontrol sistemi**  
-  - PID kontrolör ile hız ve direksiyon kontrolü  
-  - CAN-BUS üzerinden araç komut gönderimi  
-- **SLAM & Haritalama**  
-  - Lidar ve/veya stereo kamera bazlı harita oluşturma  
-- **Simülasyon desteği**  
-  - Simülasyon tabanlı test için ROS ve Gazebo örnekleri  
-- **Modüler yapı**  
-  - Her bir aşama için ayrı ROS-package veya Python modülleri  
+The project implements a basic lane following pipeline using computer vision techniques.
+It processes camera input, detects lane lines, and generates steering commands accordingly.
+
+This version is designed to be **lightweight, easy to understand, and modular**.
 
 ---
 
-## ⚙️ Kurulum
+## ⚙️ Features
 
-### Gereksinimler
+* Real-time lane detection
+* Image processing-based pipeline (OpenCV)
+* Steering angle calculation
+* Clean and simplified codebase
 
-- Ubuntu 22.04
-- ROS 2 Humble
-- Python 3.8+ ve gerekli paketler
+---
 
+## 🧠 Pipeline
 
+1. Capture image from camera
+2. Convert to grayscale
+3. Apply edge detection (Canny)
+4. Select region of interest
+5. Detect lane lines
+6. Compute steering angle
+7. Send control command
+
+---
+
+## 🗂️ Project Structure
+
+```
+Robotaksi25/
+├── src/        # Main implementation
+├── scripts/    # Helper scripts
+├── config/     # Parameters / configs
+├── launch/     # Launch files (if ROS is used)
+└── README.md
+```
+
+---
+
+## 🚀 Installation
+
+```bash
+git clone https://github.com/IsmailAtasoy/Robotaksi25.git
+cd Robotaksi25
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Usage
+
+```bash
+python main.py
+```
+
+*(If your entry file is different, update this command accordingly.)*
+
+---
+
+## 🛠️ Requirements
+
+* Python 3.9
+* OpenCV
+* NumPy
+
+---
+
+## 🎯 Purpose
+
+This repository is intended to demonstrate the **core logic of lane following** in an autonomous driving system without unnecessary complexity.
+
+---
+
+## 👤 Author
+
+Ismail Atasoy
+
+---
+
+## 📌 Notes
+
+* This is a **reduced version** of a larger project
+* Designed for learning, experimentation, and demonstration
